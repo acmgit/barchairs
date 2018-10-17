@@ -26,8 +26,7 @@ minetest.register_node("barchairs:barchairs_round_padded",
     parmtype = "light",
 	paramtype2 = "colorwallmounted",
 	palette = "unifieddyes_palette_colorwallmounted.png",
-    sunlight_propagates = true,
-    --walkable = false,
+    sunlight_propagates = false,
     node_box = nbox,
 	selection_box = cbox,
 	collision_box = cbox,
@@ -40,6 +39,33 @@ minetest.register_node("barchairs:barchairs_round_padded",
 	after_dig_node = unifieddyes.after_dig_node,
 	on_rotate = unifieddyes.fix_after_screwdriver_nsew,
  	on_rightclick = function(pos, node, clicker, itemstack, pointed_thing)
+		if not clicker:is_player() then
+			return itemstack
+		end
+		pos.y = pos.y-0.5
+		clicker:setpos(pos)
+		return itemstack
+	end
+})
+
+minetest.register_node("barchairs:barchairs_plain", 
+{
+	description = "Barchair plain",
+    drawtype = "mesh",
+	mesh = "barchairs_barchair_plain.obj",
+	tiles = {"default_wood"},
+	inventory_image = "barchairs_barchair_plain_inv.png",
+    parmtype = "light",
+	paramtype2 = "wallmounted",
+    sunlight_propagates = false,
+    node_box = nbox,
+	selection_box = cbox,
+	collision_box = cbox,
+	groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2, ud_param2_colorable = 1},
+	sounds = default.node_sound_wood_defaults(),
+	after_place_node = unifieddyes.fix_rotation_nsew,
+	on_rotate = unifieddyes.fix_after_screwdriver_nsew,
+    on_rightclick = function(pos, node, clicker, itemstack, pointed_thing)
 		if not clicker:is_player() then
 			return itemstack
 		end
