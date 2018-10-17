@@ -18,7 +18,6 @@ minetest.register_node("barchairs:barchairs_round_padded",
 	description = "Round Barchair padded",
     drawtype = "mesh",
 	mesh = "barchairs_barchair_round_padded.obj",
-    --mesh = "barchairs_barchair_round_padded.3ds",
 	tiles = {
 		"default_wood",
 		"wool_white.png"
