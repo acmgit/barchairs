@@ -39,8 +39,14 @@ minetest.register_node("barchairs:barchairs_round_padded",
 	end,
 	after_dig_node = unifieddyes.after_dig_node,
 	on_rotate = unifieddyes.fix_after_screwdriver_nsew,
-    --on_rightclick = function(pos, node, player, itemstack, pointed_thing)
-    --end,
+ 	on_rightclick = function(pos, node, clicker, itemstack, pointed_thing)
+		if not clicker:is_player() then
+			return itemstack
+		end
+		pos.y = pos.y-0.5
+		clicker:setpos(pos)
+		return itemstack
+	end
 })
 
 dofile(modpath .. "/recipes.lua")
