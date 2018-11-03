@@ -1,19 +1,6 @@
 local modname = minetest.get_current_modname()
 local modpath = minetest.get_modpath(modname)
 
-local cbox = {
-	type = "fixed",
-	fixed = { -0.3125, -0.5, -0.3125, 0.3125, 0.5, 0.3125 },
-}
-
-local nbox = {
-	type = "fixed",
-	fixed = {
-		{-0.5, -0.5, -0.5, 0.5, 0, 0.5 },
-		{-0.5, -0.5, 0.4, 0.5, 0.5, 0.5 }
-	}
-}
-
 local wood = {}
 
 -- Various default Wood
@@ -103,72 +90,3 @@ for _,kind in ipairs(wood) do
     end -- if(minetest.registered_nodes
     
 end -- for
-
--- is Unifieddyes installed?
-if(minetest.get_modpath("unifieddyes"))  then
-   
-    minetest.register_node("barchairs:barchairs_round_padded", 
-    {
-        description = "Round Barchair padded",
-        drawtype = "mesh",
-        mesh = "barchairs_barchair_round_padded.obj",
-        tiles = {
-            "default_wood",
-            "wool_white.png"
-        },
-        inventory_image = "barchairs_barchair_round_padded_inv.png",
-        parmtype = "light",
-        paramtype2 = "colorwallmounted",
-        palette = "unifieddyes_palette_colorwallmounted.png",
-        sunlight_propagates = false,
-        node_box = nbox,
-        selection_box = cbox,
-        collision_box = cbox,
-        groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2, ud_param2_colorable = 1},
-        sounds = default.node_sound_wood_defaults(),
-        after_place_node = function(pos, placer, itemstack, pointed_thing)
-            unifieddyes.fix_rotation_nsew(pos, placer, itemstack, pointed_thing)
-            unifieddyes.recolor_on_place(pos, placer, itemstack, pointed_thing)
-        end,
-        after_dig_node = unifieddyes.after_dig_node,
-        on_rotate = unifieddyes.fix_after_screwdriver_nsew,
-        on_rightclick = function(pos, node, clicker, itemstack, pointed_thing)
-            if not clicker:is_player() then
-                return itemstack
-            end
-            pos.y = pos.y-0.5
-            clicker:setpos(pos)
-            return itemstack
-        end
-    })
-
-    minetest.register_node("barchairs:barchairs_plain", 
-    {
-        description = "Barchair plain",
-        drawtype = "mesh",
-        mesh = "barchairs_barchair_plain.obj",
-        tiles = {"default_wood"},
-        inventory_image = "barchairs_barchair_plain_inv.png",
-        parmtype = "light",
-        paramtype2 = "wallmounted",
-        sunlight_propagates = false,
-        node_box = nbox,
-        selection_box = cbox,
-        collision_box = cbox,
-        groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2, ud_param2_colorable = 1},
-        sounds = default.node_sound_wood_defaults(),
-        after_place_node = unifieddyes.fix_rotation_nsew,
-        on_rotate = unifieddyes.fix_after_screwdriver_nsew,
-        on_rightclick = function(pos, node, clicker, itemstack, pointed_thing)
-            if not clicker:is_player() then
-                return itemstack
-            end
-            pos.y = pos.y-0.5
-            clicker:setpos(pos)
-            return itemstack
-        end
-    })
-
-end
-
-dofile(modpath .. "/recipes.lua")
