@@ -50,13 +50,14 @@ for _,kind in pairs(material) do
     
     if(minetest.registered_nodes[mod .. mat] ~= nil) then
         
-        minetest.register_node("barchairs:barchairs_plain_" .. mat, {
+        minetest.register_node(modname .. ":barchairs_plain_" .. mat, {
             description = "Barchair plain " .. mat,
             tiles = minetest.registered_nodes[mod .. mat].tiles,
             groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2},
             sounds = default.node_sound_wood_defaults(),
             drawtype = "nodebox",
             paramtype = "light",
+            paramtype2 = "facedir",
             node_box = {
                 type = "fixed",
                 fixed = {
@@ -82,6 +83,7 @@ for _,kind in pairs(material) do
                     {0.25, -0.3125, -0.3125, 0.3125, -0.25, 0.3125}, -- Quer_v
 ]]--                }
             },
+            on_place = minetest.rotate_node,
             on_rightclick = function(pos, node, clicker, itemstack, pointed_thing)
                 if not clicker:is_player() then
                     return itemstack
@@ -95,7 +97,7 @@ for _,kind in pairs(material) do
 
     
         minetest.register_craft({
-            output = "barchairs:barchairs_plain_" .. mat .. " 2",
+            output = modname .. ":barchairs_plain_" .. mat .. " 2",
             recipe = {
                     {"",mod .. mat,""},
                     {"default:stick","","default:stick"},
@@ -106,7 +108,7 @@ for _,kind in pairs(material) do
         if(burn > 0) then
                 minetest.register_craft({
                     type = "fuel",
-                    recipe = "barchairs:barchairs_plain_" .. mat,
+                    recipe = modname .. ":barchairs_plain_" .. mat,
                     burntime = burn,
                 }) -- minetest.register_craft
                 
