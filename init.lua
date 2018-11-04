@@ -50,6 +50,7 @@ for _,kind in pairs(material) do
     
     if(minetest.registered_nodes[mod .. mat] ~= nil) then 
         
+        -- Barchair
         minetest.register_node(modname .. ":barchairs_plain_" .. mat, {
             description = "Barchair plain " .. mat,
             tiles = minetest.registered_nodes[mod .. mat].tiles,
@@ -102,7 +103,199 @@ for _,kind in pairs(material) do
                 }) -- minetest.register_craft
                 
         end -- if(burn
+
+        -- Bar
+            
+        -- Bar Front
+        minetest.register_node(modname .. ":bar_front_" .. mat, {
+            description = "Bar front " .. mat,
+            tiles = minetest.registered_nodes[mod .. mat].tiles,
+            groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2},
+            sounds = default.node_sound_wood_defaults(),
+            drawtype = "nodebox",
+            paramtype = "light",
+            paramtype2 = "facedir",
+            node_box = {
+                type = "fixed",
+                fixed = {
+                            {0.0625, -0.5, -0.5, 0.1875, 0.5, 0.5}, -- Front
+                            {0.0625, 0.375, -0.5, 0.5, 0.5, 0.5}, -- Top
+                            {0, -0.5, 0.375, 0.0625, 0.5, 0.4375}, -- Deco_1
+                            {0, -0.5, 0.125, 0.0625, 0.5, 0.1875}, -- Deco_2
+                            {0, -0.5, -0.125, 0.0625, 0.5, -0.0625}, -- Deco_3
+                            {0, -0.5, -0.375, 0.0625, 0.5, -0.3125}, -- Deco_4
+                     
+                        }
+                    
+                }, -- node_box
+                                                             
+            on_place = minetest.rotate_node,
+                                           
+        }) -- minetest.register_node
+
+        -- Recipe
+        minetest.register_craft({
+            output = modname .. ":bar_front_" .. mat .. " 2",
+            recipe = {
+                    {"",mod .. mat,""},
+                    {"default:stick","default:stick","default:stick"},
+                    {"",mod .. mat,""}
+            },
+        }) -- minetest.register_craft
         
+        -- Recipe full
+        if(burn > 0) then
+                minetest.register_craft({
+                    type = "fuel",
+                    recipe = modname .. ":bar_front_" .. mat,
+                    burntime = burn + 2,
+                }) -- minetest.register_craft
+                
+        end -- if(burn
+
+        -- Bar Corner left
+        minetest.register_node(modname .. ":bar_corner_left_" .. mat, {
+            description = "Bar corner left " .. mat,
+            tiles = minetest.registered_nodes[mod .. mat].tiles,
+            groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2},
+            sounds = default.node_sound_wood_defaults(),
+            drawtype = "nodebox",
+            paramtype = "light",
+            paramtype2 = "facedir",
+            node_box = {
+                type = "fixed",
+                fixed = {
+                            {-0.5, -0.5, -0.1875, 0.5, 0.5, -0.0625}, -- Front
+                            {-0.5, 0.375, -0.5, 0.5, 0.5, -0.0625}, -- Top
+                            {-0.4375, -0.5, -0.0625, -0.375, 0.5, -0}, -- Deco_1
+                            {-0.1875, -0.5, -0.0625, -0.125, 0.5, -0}, -- Deco_2
+                            {0.0625, -0.5, -0.0625, 0.125, 0.5, -0}, -- Deco_3
+                            {0.3125, -0.5, -0.0625, 0.375, 0.5, -0}, -- Deco_4
+                            {-0.5, -0.5, -0.5, -0.375, 0.5, -0.125}, -- Side_r
+                     
+                        }
+                    
+                }, -- node_box
+                                                             
+            on_place = minetest.rotate_node,
+                                           
+        }) -- minetest.register_node
+        
+        -- Recipe
+        minetest.register_craft({
+            output = modname .. ":bar_corner_left_" .. mat .. " 2",
+            recipe = {
+                    {mod .. mat,"",""},
+                    {"default:stick","default:stick","default:stick"},
+                    {mod .. mat, "",""}
+            },
+        }) -- minetest.register_craft
+        
+        -- Recipe full
+        if(burn > 0) then
+                minetest.register_craft({
+                    type = "fuel",
+                    recipe = modname .. ":bar_corner_left_" .. mat,
+                    burntime = burn + 2,
+                }) -- minetest.register_craft
+                
+        end -- if(burn
+
+        -- Bar Corner right
+        minetest.register_node(modname .. ":bar_corner_right_" .. mat, {
+            description = "Bar corner right " .. mat,
+            tiles = minetest.registered_nodes[mod .. mat].tiles,
+            groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2},
+            sounds = default.node_sound_wood_defaults(),
+            drawtype = "nodebox",
+            paramtype = "light",
+            paramtype2 = "facedir",
+            node_box = {
+                type = "fixed",
+                fixed = {
+                            {-0.5, -0.5, 0.0625, 0.5, 0.5, 0.1875}, -- Front
+                            {-0.5, 0.375, 0.0625, 0.5, 0.5, 0.5}, -- Top
+                            {-0.4375, -0.5, 0, -0.375, 0.5, 0.0625}, -- Deco_1
+                            {-0.1875, -0.5, 0, -0.125, 0.5, 0.0625}, -- Deco_2
+                            {0.0625, -0.5, 0, 0.125, 0.5, 0.0625}, -- Deco_3
+                            {0.3125, -0.5, 0, 0.375, 0.5, 0.0625}, -- Deco_4
+                            {-0.5, -0.5, 0.125, -0.375, 0.5, 0.5}, -- Side_r
+
+                        }
+                    
+                }, -- node_box
+                                                             
+            on_place = minetest.rotate_node,
+                                           
+        }) -- minetest.register_node
+
+        -- Recipe
+        minetest.register_craft({
+            output = modname .. ":bar_corner_right_" .. mat .. " 2",
+            recipe = {
+                    {"", "", mod .. mat},
+                    {"default:stick","default:stick","default:stick"},
+                    {"", "", mod .. mat}
+            },
+        }) -- minetest.register_craft
+        
+        -- Recipe full
+        if(burn > 0) then
+                minetest.register_craft({
+                    type = "fuel",
+                    recipe = modname .. ":bar_corner_right_" .. mat,
+                    burntime = burn + 2,
+                }) -- minetest.register_craft
+                
+        end -- if(burn
+
+        -- Bar Side
+        minetest.register_node(modname .. ":bar_side_" .. mat, {
+            description = "Bar side " .. mat,
+            tiles = minetest.registered_nodes[mod .. mat].tiles,
+            groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2},
+            sounds = default.node_sound_wood_defaults(),
+            drawtype = "nodebox",
+            paramtype = "light",
+            paramtype2 = "facedir",
+            node_box = {
+                type = "fixed",
+                fixed = {
+                            {-0.5, -0.5, -0.4375, 0.5, 0.5, -0.3125}, -- Front
+                            {-0.5, 0.375, -0.5, 0.5, 0.5, -0.0625}, -- Top
+                            {0.375, -0.5, -0.5, 0.4375, 0.5, -0.4375}, -- Deco_1
+                            {0.0625, -0.5, -0.5, 0.125, 0.5, -0.4375}, -- Deco_2
+                            {-0.125, -0.5, -0.5, -0.0625, 0.5, -0.4375}, -- Deco_3
+                            {-0.375, -0.5, -0.5, -0.3125, 0.5, -0.4375}, -- Deco_4
+                     
+                        }
+                    
+                }, -- node_box
+                                                             
+            on_place = minetest.rotate_node,
+                                           
+        }) -- minetest.register_node
+
+        -- Recipe
+        minetest.register_craft({
+            output = modname .. ":bar_side_" .. mat .. " 2",
+            recipe = {
+                    {"","default:stick",""},
+                    {mod .. mat,"default:stick",mod .. mat},
+                    {"","default:stick",""}
+            },
+        }) -- minetest.register_craft
+        
+        -- Recipe full
+        if(burn > 0) then
+                minetest.register_craft({
+                    type = "fuel",
+                    recipe = modname .. ":bar_side_" .. mat,
+                    burntime = burn + 2,
+                }) -- minetest.register_craft
+                
+        end -- if(burn
+
     end -- if(minetest.registered_nodes
-    
+
 end -- for
