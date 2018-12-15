@@ -1,6 +1,9 @@
 local modname = minetest.get_current_modname()
 local modpath = minetest.get_modpath(modname)
 
+local version = 1
+local revision = 0
+
 local mod
 local mat
 local burn
@@ -299,3 +302,15 @@ for _,kind in pairs(material) do
     end -- if(minetest.registered_nodes
 
 end -- for
+
+minetest.register_chatcommand(modname .. "_version",{
+    
+    params = "<>",
+    description = "Shows the current Version of " .. modname,
+    func = function (name)
+        
+        minetest.chat_send_player(name, "Mod: " .. modname .. " v " .. version .. "." .. revision .. "\n")
+        
+    end -- function
+
+}) -- chatcommand prospector_version
