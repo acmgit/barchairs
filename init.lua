@@ -87,13 +87,14 @@ function barchair.register_barchair(mod, mat, burnvalue)
         
     end -- if(burnvalue
     
+    mod = string.match(mod, "%w+%:-")
     
-    if(minetest.registered_nodes[mod .. mat] ~= nil) then 
-        
+    if(minetest.registered_nodes[mod ..":" .. mat] ~= nil) then 
+                
         -- Barchair
-        minetest.register_node(":" .. barchair.modname .. ":barchairs_plain_" .. mat, {
-            description = "Barchair plain " .. mat,
-            tiles = minetest.registered_nodes[mod .. mat].tiles,
+        minetest.register_node(":" .. barchair.modname .. ":barchairs_plain_" .. mod .. "_" .. mat, {
+            description = "Barchair plain " .. mod .. mat,
+            tiles = minetest.registered_nodes[mod .. ":" .. mat].tiles,
             groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2},
             sounds = default.node_sound_wood_defaults(),
             drawtype = "nodebox",
@@ -127,11 +128,11 @@ function barchair.register_barchair(mod, mat, burnvalue)
 
     
         minetest.register_craft({
-            output = barchair.modname .. ":barchairs_plain_" .. mat .. " 2",
+            output = barchair.modname .. ":barchairs_plain_" .. mod .. "_" .. mat .. " 2",
             recipe = {
-                    {"",mod .. mat,""},
+                    {"",mod .. ":" .. mat,""},
                     {"default:stick","","default:stick"},
-                    {"default:stick",mod .. mat,"default:stick"}
+                    {"default:stick",mod .. ":" .. mat,"default:stick"}
             },
         }) -- minetest.register_craft
         
@@ -147,9 +148,9 @@ function barchair.register_barchair(mod, mat, burnvalue)
         -- Bar
             
         -- Bar Front
-        minetest.register_node(":" .. barchair.modname .. ":bar_front_" .. mat, {
-            description = "Bar front " .. mat,
-            tiles = minetest.registered_nodes[mod .. mat].tiles,
+        minetest.register_node(":" .. barchair.modname .. ":bar_front_" .. mod .. "_" .. mat, {
+            description = "Bar front " .. mod .. "_" .. mat,
+            tiles = minetest.registered_nodes[mod .. ":" .. mat].tiles,
             groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2},
             sounds = default.node_sound_wood_defaults(),
             drawtype = "nodebox",
@@ -175,11 +176,11 @@ function barchair.register_barchair(mod, mat, burnvalue)
 
         -- Recipe
         minetest.register_craft({
-            output = barchair.modname .. ":bar_front_" .. mat .. " 2",
+            output = barchair.modname .. ":bar_front_" .. mod .. "_" .. mat .. " 2",
             recipe = {
-                    {"",mod .. mat,""},
+                    {"",mod .. ":" .. mat,""},
                     {"default:stick","default:stick","default:stick"},
-                    {"",mod .. mat,""}
+                    {"",mod .. ":" .. mat,""}
             },
         }) -- minetest.register_craft
         
@@ -187,16 +188,16 @@ function barchair.register_barchair(mod, mat, burnvalue)
         if(burn > 0) then
                 minetest.register_craft({
                     type = "fuel",
-                    recipe = barchair.modname .. ":bar_front_" .. mat,
+                    recipe = barchair.modname .. ":bar_front_" .. mod .. "_" .. mat,
                     burntime = burn + 2,
                 }) -- minetest.register_craft
                 
         end -- if(burn
 
         -- Bar Corner left
-        minetest.register_node(":" .. barchair.modname .. ":bar_corner_left_" .. mat, {
-            description = "Bar corner left " .. mat,
-            tiles = minetest.registered_nodes[mod .. mat].tiles,
+        minetest.register_node(":" .. barchair.modname .. ":bar_corner_left_" .. mod .. "_" .. mat, {
+            description = "Bar corner left " .. mod .. "_" .. mat,
+            tiles = minetest.registered_nodes[mod .. ":" .. mat].tiles,
             groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2},
             sounds = default.node_sound_wood_defaults(),
             drawtype = "nodebox",
@@ -223,11 +224,11 @@ function barchair.register_barchair(mod, mat, burnvalue)
         
         -- Recipe
         minetest.register_craft({
-            output = barchair.modname .. ":bar_corner_left_" .. mat .. " 2",
+            output = barchair.modname .. ":bar_corner_left_" .. mod .. "_" .. mat .. " 2",
             recipe = {
-                    {mod .. mat,"",""},
+                    {mod .. ":" .. mat,"",""},
                     {"default:stick","default:stick","default:stick"},
-                    {mod .. mat, "",""}
+                    {mod .. ":" .. mat, "",""}
             },
         }) -- minetest.register_craft
         
@@ -235,16 +236,16 @@ function barchair.register_barchair(mod, mat, burnvalue)
         if(burn > 0) then
                 minetest.register_craft({
                     type = "fuel",
-                    recipe = barchair.modname .. ":bar_corner_left_" .. mat,
+                    recipe = barchair.modname .. ":bar_corner_left_" .. mod .. "_" .. mat,
                     burntime = burn + 2,
                 }) -- minetest.register_craft
                 
         end -- if(burn
 
         -- Bar Corner right
-        minetest.register_node(":" .. barchair.modname .. ":bar_corner_right_" .. mat, {
-            description = "Bar corner right " .. mat,
-            tiles = minetest.registered_nodes[mod .. mat].tiles,
+        minetest.register_node(":" .. barchair.modname .. ":bar_corner_right_" .. mod .. "_" .. mat, {
+            description = "Bar corner right " .. mod .. "_" .. mat,
+            tiles = minetest.registered_nodes[mod .. ":" .. mat].tiles,
             groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2},
             sounds = default.node_sound_wood_defaults(),
             drawtype = "nodebox",
@@ -271,11 +272,11 @@ function barchair.register_barchair(mod, mat, burnvalue)
 
         -- Recipe
         minetest.register_craft({
-            output = barchair.modname .. ":bar_corner_right_" .. mat .. " 2",
+            output = barchair.modname .. ":bar_corner_right_" .. mod .. "_" .. mat .. " 2",
             recipe = {
-                    {"", "", mod .. mat},
+                    {"", "", mod .. ":" .. mat},
                     {"default:stick","default:stick","default:stick"},
-                    {"", "", mod .. mat}
+                    {"", "", mod .. ":" .. mat}
             },
         }) -- minetest.register_craft
         
@@ -283,16 +284,16 @@ function barchair.register_barchair(mod, mat, burnvalue)
         if(burn > 0) then
                 minetest.register_craft({
                     type = "fuel",
-                    recipe = barchair.modname .. ":bar_corner_right_" .. mat,
+                    recipe = barchair.modname .. ":bar_corner_right_" .. mod .. "_" .. mat,
                     burntime = burn + 2,
                 }) -- minetest.register_craft
                 
         end -- if(burn
 
         -- Bar Side
-        minetest.register_node(":" .. barchair.modname .. ":bar_side_" .. mat, {
-            description = "Bar side " .. mat,
-            tiles = minetest.registered_nodes[mod .. mat].tiles,
+        minetest.register_node(":" .. barchair.modname .. ":bar_side_" .. mod .. "_" .. mat, {
+            description = "Bar side " .. mod .. "_" .. mat,
+            tiles = minetest.registered_nodes[mod .. ":" .. mat].tiles,
             groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2},
             sounds = default.node_sound_wood_defaults(),
             drawtype = "nodebox",
@@ -318,10 +319,10 @@ function barchair.register_barchair(mod, mat, burnvalue)
 
         -- Recipe
         minetest.register_craft({
-            output = barchair.modname .. ":bar_side_" .. mat .. " 2",
+            output = barchair.modname .. ":bar_side_" .. mod .. "_" .. mat .. " 2",
             recipe = {
                     {"","default:stick",""},
-                    {mod .. mat,"default:stick",mod .. mat},
+                    {mod .. ":" .. mat,"default:stick",mod .. ":" .. mat},
                     {"","default:stick",""}
             },
         }) -- minetest.register_craft
@@ -330,12 +331,17 @@ function barchair.register_barchair(mod, mat, burnvalue)
         if(burn > 0) then
                 minetest.register_craft({
                     type = "fuel",
-                    recipe = barchair.modname .. ":bar_side_" .. mat,
+                    recipe = barchair.modname .. ":bar_side_" .. mod .. "_" .. mat,
                     burntime = burn + 2,
                 }) -- minetest.register_craft
                 
         end -- if(burn
-
+            
+        minetest.log("info", "[MOD] Barchairs: " .. mod .. ":" .. mat .. " registered.")
+        
+    else
+        minetest.log("warning", "[MOD] Barchairs: " .. mod .. ":" .. mat .. " not found to register.")
+        
     end -- if(minetest.registered_nodes
 
 end -- function barchair.register_barchair(
