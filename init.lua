@@ -23,7 +23,7 @@ barchair.modpath = minetest.get_modpath(barchair.modname)
 barchair.version = 1
 barchair.revision = 1
 
-local material = {}
+local material = {{nil, nil, nil}}
 
 -- Various default Wood
 material = {
@@ -346,6 +346,8 @@ function barchair.register_barchair(mod, mat, burnvalue)
 
 end -- function barchair.register_barchair(
 
+local register = barchair.register_barchair
+
 for _,kind in pairs(material) do
     
     mod = kind[1]               -- Modname
@@ -353,7 +355,7 @@ for _,kind in pairs(material) do
     burn = kind[3]              -- Burnvalue > 0 = burnable
     -- print( mod, mat, burn)
     
-    barchair.register_barchair(mod, mat, burn)
+    register(mod, mat, burn)
     
 end -- for
 
