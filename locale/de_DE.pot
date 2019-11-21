@@ -1,0 +1,38 @@
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+#
+# acm <undertakers_help@yahoo.com>, 2019.
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-11-21 18:50+0100\n"
+"PO-Revision-Date: 2019-11-21 19:00+0100\n"
+"Last-Translator: acm <undertakers_help@yahoo.com>\n"
+"Language-Team: German <kde-i18n-de@kde.org>\n"
+"Language: de\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: Lokalize 19.08.3\n"
+
+#: init.lua
+msgid "Barchair plain "
+msgstr "Barstuhl einfach"
+
+#: init.lua
+msgid "Bar front "
+msgstr "Bar vorne"
+
+#: init.lua
+msgid "Bar corner left "
+msgstr "Bar Ecke links"
+
+#: init.lua
+msgid "Bar corner right "
+msgstr "Bar Ecke rechts"
+
+#: init.lua
+msgid "Bar side "
+msgstr "Bar seitlich"

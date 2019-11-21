@@ -1,0 +1,6 @@
+# textdomain: barchairs
+Barchair plain =
+Bar front =
+Bar corner left =
+Bar corner right =
+Bar side =
