@@ -12,6 +12,7 @@ Move your Download to the Mods-Folder.
 default<br>
 
 ### optional
+intllib, baldcypress, bamboo, birch, cacaotree, cherrytree, chestnuttree, clementinetree, ebony, holytree, jacaranda, larch, lemontree, mahogany, maple, oak, palm, plumtree, pomegranate, sequoia, willow, moretrees, moreblocks<br>
 
 ## For Modwriter
 

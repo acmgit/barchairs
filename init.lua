@@ -21,7 +21,7 @@ barchair = {}
 barchair.modname = minetest.get_current_modname()
 barchair.modpath = minetest.get_modpath(barchair.modname)
 barchair.version = 1
-barchair.revision = 2
+barchair.revision = 3
 
 local material = {{nil, nil, nil}}
 
@@ -371,18 +371,26 @@ for _,kind in pairs(material) do
     
 end -- for
 
---[[
-minetest.register_chatcommand(modname .. "_version",{
-    
-    params = "<>",
-    description = "Shows the current Version of " .. modname,
-    func = function (name)
-        
-        minetest.chat_send_player(name, "Mod: " .. modname .. " v " .. version .. "." .. revision .. "\n")
-        
-    end -- function
+barchair.register_moretrees  = minetest.settings:get("barchairs.register_moretrees") or false
+barchair.register_moreblocks  = minetest.settings:get("barchairs.register_moreblocks") or false
+barchair.register_cool_trees  = minetest.settings:get("barchairs.register_cool_trees") or false
 
-}) -- chatcommand prospector_version
-]]--
-    
+if (barchair.register_moretrees) then
+    dofile("moretrees.lua")
+    minetest.log("info", "[MOD] Barchairs: moretrees registered.")
+
+end
+
+if (barchair.register_moreblocks) then
+    dofile("moreblocks.lua")
+    minetest.log("info", "[MOD] Barchairs: moreblocks registered.")
+
+end
+
+if (barchair.register_cool_trees) then
+    dofile("")
+    minetest.log("info", "[MOD] Barchairs: cool_trees registered.")
+
+end
+
 print("[MOD]" .. barchair.modname .. " Version " .. barchair.version .. "." .. barchair.revision .. " successfully loaded.")
