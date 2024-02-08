@@ -112,7 +112,7 @@ function barchairs.register_barchair(mod, mat, burnvalue)
                 
         -- Barchair
         minetest.register_node(":" .. barchairs.modname .. ":barchairs_plain_" .. mod .. "_" .. mat, {
-            description = S("Barchair plain ") .. mod .. mat,
+            description = S("Barchair plain ") .. mod .. ":".. mat,
             tiles = minetest.registered_nodes[mod .. ":" .. mat].tiles,
             groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2},
             sounds = default.node_sound_wood_defaults(),
@@ -168,7 +168,7 @@ function barchairs.register_barchair(mod, mat, burnvalue)
             
         -- Bar Front
         minetest.register_node(":" .. barchairs.modname .. ":bar_front_" .. mod .. "_" .. mat, {
-            description = S("Bar front ") .. mod .. "_" .. mat,
+            description = S("Bar front ") .. mod .. ":" .. mat,
             tiles = minetest.registered_nodes[mod .. ":" .. mat].tiles,
             groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2},
             sounds = default.node_sound_wood_defaults(),
@@ -215,7 +215,7 @@ function barchairs.register_barchair(mod, mat, burnvalue)
 
         -- Bar Corner left
         minetest.register_node(":" .. barchairs.modname .. ":bar_corner_left_" .. mod .. "_" .. mat, {
-            description = S("Bar corner left ") .. mod .. "_" .. mat,
+            description = S("Bar corner left ") .. mod .. ":" .. mat,
             tiles = minetest.registered_nodes[mod .. ":" .. mat].tiles,
             groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2},
             sounds = default.node_sound_wood_defaults(),
@@ -263,7 +263,7 @@ function barchairs.register_barchair(mod, mat, burnvalue)
 
         -- Bar Corner right
         minetest.register_node(":" .. barchairs.modname .. ":bar_corner_right_" .. mod .. "_" .. mat, {
-            description = S("Bar corner right ") .. mod .. "_" .. mat,
+            description = S("Bar corner right ") .. mod .. ":" .. mat,
             tiles = minetest.registered_nodes[mod .. ":" .. mat].tiles,
             groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2},
             sounds = default.node_sound_wood_defaults(),
@@ -311,7 +311,7 @@ function barchairs.register_barchair(mod, mat, burnvalue)
 
         -- Bar Side
         minetest.register_node(":" .. barchairs.modname .. ":bar_side_" .. mod .. "_" .. mat, {
-            description = S("Bar side ") .. mod .. "_" .. mat,
+            description = S("Bar side ") .. mod .. ":" .. mat,
             tiles = minetest.registered_nodes[mod .. ":" .. mat].tiles,
             groups = {snappy=2,choppy=2,oddly_breakable_by_hand=2},
             sounds = default.node_sound_wood_defaults(),

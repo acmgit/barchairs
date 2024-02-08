@@ -25,7 +25,7 @@ barchairs.register_moreblocks = true<br>
 barchairs.register_cool_trees = true<br>
 
 Barchairs 1.3 or higher have changed (fixed) the variable barchair to barchairs.<br>
-To convert the old barchairs, enable the option: <br>
+If you have unknown Barchairs in your world then enable the following option:<br>
 
 barchairs.convert_old = true
 
