@@ -24,6 +24,14 @@ barchairs.register_moretrees = true<br>
 barchairs.register_moreblocks = true<br>
 barchairs.register_cool_trees = true<br>
 
+Barchairs 1.3 or higher have changed (fixed) the variable barchair to barchairs.<br>
+To convert the old barchairs, enable the option: <br>
+
+barchairs.convert_old = true
+
+This activates an alias to the old names of the barchairs and you don't loose any old barchair.
+If all in your world is converted, you can disable this option.
+
 ## For Modwriter
 
 ### Function barchair.register_barchair(mod, mat, burnvalue)

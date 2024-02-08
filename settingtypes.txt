@@ -1,5 +1,6 @@
 # init
-barchair.register_moretrees (Register Moretrees?) bool false
-barchair.register_moreblocks (Register Moreblocks?) bool false
-barchair.register_cool_trees (Register Cool Trees?) bool false
+barchairs.convert_old (Fix old barchairs?) bool false
+barchairs.register_moretrees (Register Moretrees?) bool false
+barchairs.register_moreblocks (Register Moreblocks?) bool false
+barchairs.register_cool_trees (Register Cool Trees?) bool false
 

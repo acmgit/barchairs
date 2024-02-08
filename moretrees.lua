@@ -34,15 +34,15 @@ local material = {
         {"moretrees:", "jungletree_planks", 15 },
 }
 
-local register = barchair.register_barchair
+local register = barchairs.register_barchair
 
 for _,kind in pairs(material) do
 
-    mod = kind[1]               -- Modname
-    mat = kind[2]               -- Materialname (for the Textur)
-    burn = kind[3]              -- Burnvalue > 0 = burnable
+    local mod = kind[1]               -- Modname
+    local mat = kind[2]               -- Materialname (for the Textur)
+    local burnvalue = kind[3]              -- Burnvalue > 0 = burnable
     -- print( mod, mat, burn)
 
-    register(mod, mat, burn)
+    register(mod, mat, burnvalue)
 
 end -- for
